@@ -18,7 +18,7 @@ Add it as a step to your workflow
         accept-eula: true
 ```
 
-`accept-eula` confirms your acceptance of the End-User Licensing Agreement.
+`accept-eula` confirms your acceptance of the End-User Licensing Agreement
 
 ## Versions
 
@@ -31,7 +31,7 @@ Specify a version (defaults to the latest)
         sqlserver-version: 2019
 ```
 
-Currently supports `2019` and `2017`.
+Currently supports `2019` and `2017`
 
 Test against multiple versions
 
