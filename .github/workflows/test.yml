@@ -7,14 +7,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04]
-        # sqlserver-version: [2019, 2017]
-        os: [ubuntu-18.04]
-        sqlserver-version: [2019]
+        os: [ubuntu-18.04, ubuntu-16.04]
+        sqlserver-version: [2019, 2017]
     steps:
     - uses: ankane/setup-sqlserver@v1
       with:
         sqlserver-version: ${{ matrix.sqlserver-version }}
     - run: sqlcmd -?
-    - run: sqlcmd -Q 'CREATE DATABASE testdb'
-    - run: sqlcmd -d testdb -Q 'SELECT @@VERSION'
+    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
+    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'

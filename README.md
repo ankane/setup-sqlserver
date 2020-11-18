@@ -3,6 +3,7 @@
 The missing action for SQL Server :tada:
 
 - Faster and simpler than containers
+- Works on Linux (`ubuntu-18.04` and `ubuntu-16.04`)
 - Supports different versions
 
 [![Build Status](https://github.com/ankane/setup-sqlserver/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-sqlserver/actions)
@@ -44,13 +45,13 @@ Test against multiple versions
 Create a database
 
 ```yml
-    - run: sqlcmd -Q 'CREATE DATABASE testdb'
+    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
 ```
 
 Run queries
 
 ```yml
-    - run: sqlcmd -d testdb -Q 'SELECT @@VERSION'
+    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'
 ```
 
 ## Related Actions
