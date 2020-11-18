@@ -2,7 +2,7 @@
 
 The missing action for SQL Server :tada:
 
-- Faster and simpler than containers
+- Simpler than containers
 - Works on Linux (`ubuntu-18.04` and `ubuntu-16.04`)
 - Supports different versions
 
