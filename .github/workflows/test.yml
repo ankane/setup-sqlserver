@@ -13,6 +13,7 @@ jobs:
     - uses: ankane/setup-sqlserver@v1
       with:
         sqlserver-version: ${{ matrix.sqlserver-version }}
+        # accept-eula: true
     - run: sqlcmd -?
     - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
     - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'

@@ -19,8 +19,12 @@ function isWindows() {
   return process.platform == 'win32';
 }
 
-const sqlserverVersion = parseFloat(process.env['INPUT_SQLSERVER-VERSION'] || 2019);
+const acceptEula = process.env['INPUT_ACCEPT-EULA'];
+if (acceptEula !== 'true') {
+  throw `The SQL Server End-User License Agreement (EULA) must be accepted before SQL Server can start`;
+}
 
+const sqlserverVersion = parseFloat(process.env['INPUT_SQLSERVER-VERSION'] || 2019);
 if (![2019, 2017].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
 }

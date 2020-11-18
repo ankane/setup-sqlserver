@@ -14,7 +14,11 @@ Add it as a step to your workflow
 
 ```yml
     - uses: ankane/setup-sqlserver@v1
+      with:
+        accept-eula: true
 ```
+
+`accept-eula` confirms your acceptance of the End-User Licensing Agreement.
 
 ## Versions
 
@@ -23,6 +27,7 @@ Specify a version (defaults to the latest)
 ```yml
     - uses: ankane/setup-sqlserver@v1
       with:
+        accept-eula: true
         sqlserver-version: 2019
 ```
 
@@ -37,6 +42,7 @@ Test against multiple versions
     steps:
     - uses: ankane/setup-sqlserver@v1
       with:
+        accept-eula: true
         sqlserver-version: ${{ matrix.sqlserver-version }}
 ```
 

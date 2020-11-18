@@ -2,6 +2,8 @@ name: Setup SQL Server
 inputs:
   sqlserver-version:
     description: The SQL Server version to download (if necessary) and use
+  accept-eula:
+    description: Confirms acceptance of the End-User Licensing Agreement
 runs:
   using: node12
   main: index.js
