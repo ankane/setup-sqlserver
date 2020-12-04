@@ -38,6 +38,7 @@ Version | `2019` | `2017`
 `ubuntu-18.04` | ✓ | ✓
 `ubuntu-16.04` | ✓ | ✓
 `windows-2019` | ✓ |
+`windows-2016` | ✓ |
 
 Test against multiple versions
 

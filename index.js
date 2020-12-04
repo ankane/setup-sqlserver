@@ -78,6 +78,8 @@ if (isMac()) {
   // for debugging
   // params.push(`/INDICATEPROGRESS`);
   run(`${tmpDir}\\Media\\setup.exe /Q ${params.join(' ')}`);
+
+  addToPath(`C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn`);
 } else {
   // install
   run(`wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -`);
