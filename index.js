@@ -1,6 +1,8 @@
 const execSync = require('child_process').execSync;
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
+const process = require('process');
 const spawnSync = require('child_process').spawnSync;
 
 function run(command) {
@@ -31,6 +33,12 @@ function waitForReady() {
   }
 }
 
+function useTmpDir() {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'sqlserver-'));
+  process.chdir(tmpDir);
+  return tmpDir;
+}
+
 const acceptEula = process.env['INPUT_ACCEPT-EULA'];
 if (acceptEula !== 'true') {
   throw `The SQL Server End-User License Agreement (EULA) must be accepted before SQL Server can start`;
@@ -44,7 +52,32 @@ if (![2019, 2017].includes(sqlserverVersion)) {
 if (isMac()) {
   throw `Mac not supported`;
 } else if (isWindows()) {
-  throw `Windows not supported yet`;
+  let url;
+  if (sqlserverVersion == 2019) {
+    url = 'https://go.microsoft.com/fwlink/?linkid=866662';
+  } else {
+    throw `SQL Server version not supported on Windows: ${sqlserverVersion}`;
+  }
+
+  // install
+  const tmpDir = useTmpDir();
+  run(`curl -Ls -o SQL${sqlserverVersion}-SSEI-Dev.exe ${url}`);
+  run(`SQL${sqlserverVersion}-SSEI-Dev.exe /Action=Download /MediaPath="${tmpDir}" /MediaType=CAB /Quiet`);
+  run(`SQLServer${sqlserverVersion}-DEV-x64-ENU.exe /X:${tmpDir}\\Media /QS`);
+  const params = [
+    `/IACCEPTSQLSERVERLICENSETERMS`,
+    `/ACTION="install"`,
+    `/FEATURES=SQL,Tools`,
+    `/INSTANCENAME=MSSQLSERVER`,
+    `/SQLSVCACCOUNT="NT AUTHORITY\\SYSTEM"`,
+    `/SQLSYSADMINACCOUNTS="BUILTIN\\ADMINISTRATORS"`,
+    `/SAPWD="YourStrong!Passw0rd"`,
+    `/SECURITYMODE=SQL`,
+    `/ERRORREPORTING=0`
+  ];
+  // for debugging
+  // params.push(`/INDICATEPROGRESS`);
+  run(`${tmpDir}\\Media\\setup.exe /Q ${params.join(' ')}`);
 } else {
   // install
   run(`wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -`);

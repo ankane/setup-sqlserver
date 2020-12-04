@@ -9,6 +9,11 @@ jobs:
       matrix:
         os: [ubuntu-18.04, ubuntu-16.04]
         sqlserver-version: [2019, 2017]
+        include:
+          - os: windows-2019
+            sqlserver-version: 2019
+          - os: windows-2016
+            sqlserver-version: 2019
     steps:
     - uses: ankane/setup-sqlserver@v1
       with:

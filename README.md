@@ -3,7 +3,7 @@
 The missing action for SQL Server :tada:
 
 - Simpler than containers
-- Works on Linux (`ubuntu-18.04` and `ubuntu-16.04`)
+- Works on Linux and Windows
 - Supports different versions
 
 [![Build Status](https://github.com/ankane/setup-sqlserver/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-sqlserver/actions)
@@ -31,7 +31,14 @@ Specify a version (defaults to the latest)
         sqlserver-version: 2019
 ```
 
-Currently supports `2019` and `2017`
+Currently supports
+
+Version | `2019` | `2017`
+--- | --- | ---
+`ubuntu-18.04` | ✓ | ✓
+`ubuntu-16.04` | ✓ | ✓
+`windows-2019` | ✓ |
+`windows-2016` | ✓ |
 
 Test against multiple versions
 
@@ -70,8 +77,15 @@ Run queries
 
 ## Resources
 
+Linux
+
 - [Install SQL Server and create a database on Ubuntu](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu)
 - [Unattended SQL Server installation script for Ubuntu](https://docs.microsoft.com/en-us/sql/linux/sample-unattended-install-ubuntu)
+
+Windows
+
+- [Install SQL Server from the Command Prompt](https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt)
+- [Automating SQL Server Deployment with Packer, Terraform, and Ansible](https://eqxtech.com/engineering/automating-sql-server-deployment-with-packer-terraform-and-ansible/)
 
 ## Contributing
 
