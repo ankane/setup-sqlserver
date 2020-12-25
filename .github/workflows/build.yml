@@ -7,9 +7,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04]
+        os: [ubuntu-18.04, ubuntu-16.04]
         sqlserver-version: [2019, 2017]
         include:
+          - os: ubuntu-20.04
+            sqlserver-version: 2019
           - os: windows-2019
             sqlserver-version: 2019
           - os: windows-2016
