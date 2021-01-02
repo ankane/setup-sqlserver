@@ -15,10 +15,12 @@ jobs:
           - os: windows-2016
             sqlserver-version: 2019
     steps:
-    - uses: ankane/setup-sqlserver@v1
+    - uses: actions/checkout@v2
+    - uses: ./.
       with:
         sqlserver-version: ${{ matrix.sqlserver-version }}
         accept-eula: true
+        database: testdb
     - run: sqlcmd -?
-    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
+    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb2'
     - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'

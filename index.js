@@ -49,6 +49,13 @@ if (![2019, 2017].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
 }
 
+const database = process.env['INPUT_DATABASE'];
+if (database && !/^\w+$/.test(database)) {
+  throw `Invalid database name`;
+}
+
+let bin;
+
 if (isMac()) {
   throw `Mac not supported`;
 } else if (isWindows()) {
@@ -80,7 +87,7 @@ if (isMac()) {
   // params.push(`/INDICATEPROGRESS`);
   run(`${tmpDir}\\Media\\setup.exe /Q ${params.join(' ')}`);
 
-  addToPath(`C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn`);
+  bin = `C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn`;
 } else {
   // install
   run(`wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -`);
@@ -93,5 +100,16 @@ if (isMac()) {
 
   waitForReady();
 
-  addToPath(`/opt/mssql-tools/bin`);
+  bin = `/opt/mssql-tools/bin`;
+}
+
+addToPath(bin);
+
+if (database) {
+  // use spawnSync for escaping
+  const args = ['-U', 'SA', '-P', 'YourStrong!Passw0rd', '-Q', `CREATE DATABASE ${database}`];
+  const ret = spawnSync(path.join(bin, 'sqlcmd'), args, {stdio: 'inherit'});
+  if (ret.status !== 0) {
+    throw ret.error;
+  }
 }

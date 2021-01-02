@@ -4,6 +4,8 @@ inputs:
     description: The SQL Server version to download (if necessary) and use
   accept-eula:
     description: Confirms acceptance of the End-User Licensing Agreement
+  database:
+    description: Database to create
 runs:
   using: node12
   main: index.js

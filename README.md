@@ -53,13 +53,17 @@ Test against multiple versions
         sqlserver-version: ${{ matrix.sqlserver-version }}
 ```
 
-## Extra Steps
+## Options
 
 Create a database
 
 ```yml
-    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
+    - uses: ankane/setup-sqlserver@v1
+      with:
+        database: testdb
 ```
+
+## Extra Steps
 
 Run queries
 
