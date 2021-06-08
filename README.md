@@ -35,6 +35,7 @@ Currently supports
 
 Version | `2019` | `2017`
 --- | --- | ---
+`ubuntu-20.04` | ✓ |
 `ubuntu-18.04` | ✓ | ✓
 `ubuntu-16.04` | ✓ | ✓
 `windows-2019` | ✓ |
