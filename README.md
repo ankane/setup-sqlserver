@@ -75,6 +75,7 @@ Run queries
 - [setup-mariadb](https://github.com/ankane/setup-mariadb)
 - [setup-mongodb](https://github.com/ankane/setup-mongodb)
 - [setup-elasticsearch](https://github.com/ankane/setup-elasticsearch)
+- [setup-opensearch](https://github.com/ankane/setup-opensearch)
 
 ## Resources
 
