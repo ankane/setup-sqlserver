@@ -11,6 +11,8 @@ jobs:
         include:
           - os: ubuntu-20.04
             sqlserver-version: 2019
+          - os: windows-2022
+            sqlserver-version: 2019
           - os: windows-2019
             sqlserver-version: 2019
           - os: windows-2016
