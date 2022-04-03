@@ -15,8 +15,6 @@ jobs:
             sqlserver-version: 2019
           - os: windows-2019
             sqlserver-version: 2019
-          - os: windows-2016
-            sqlserver-version: 2019
     steps:
     - uses: actions/checkout@v2
     - uses: ./.
