@@ -13,9 +13,9 @@ The missing action for SQL Server :tada:
 Add it as a step to your workflow
 
 ```yml
-    - uses: ankane/setup-sqlserver@v1
-      with:
-        accept-eula: true
+      - uses: ankane/setup-sqlserver@v1
+        with:
+          accept-eula: true
 ```
 
 `accept-eula` confirms your acceptance of the End-User Licensing Agreement
@@ -25,10 +25,10 @@ Add it as a step to your workflow
 Specify a version (defaults to the latest)
 
 ```yml
-    - uses: ankane/setup-sqlserver@v1
-      with:
-        accept-eula: true
-        sqlserver-version: 2019
+      - uses: ankane/setup-sqlserver@v1
+        with:
+          accept-eula: true
+          sqlserver-version: 2019
 ```
 
 Currently supports
@@ -47,10 +47,10 @@ Test against multiple versions
       matrix:
         sqlserver-version: [2019, 2017]
     steps:
-    - uses: ankane/setup-sqlserver@v1
-      with:
-        accept-eula: true
-        sqlserver-version: ${{ matrix.sqlserver-version }}
+      - uses: ankane/setup-sqlserver@v1
+        with:
+          accept-eula: true
+          sqlserver-version: ${{ matrix.sqlserver-version }}
 ```
 
 ## Extra Steps
@@ -58,13 +58,13 @@ Test against multiple versions
 Create a database
 
 ```yml
-    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
 ```
 
 Run queries
 
 ```yml
-    - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'
 ```
 
 ## Related Actions
