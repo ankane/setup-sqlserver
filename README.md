@@ -22,7 +22,7 @@ Add it as a step to your workflow
 
 ## Versions
 
-Specify a version (defaults to the latest)
+Specify a version
 
 ```yml
       - uses: ankane/setup-sqlserver@v1
@@ -33,19 +33,20 @@ Specify a version (defaults to the latest)
 
 Currently supports
 
-Version | `2019` | `2017`
---- | --- | ---
-`ubuntu-20.04` | ✓ |
-`ubuntu-18.04` | ✓ | ✓
-`windows-2022` | ✓ |
-`windows-2019` | ✓ |
+Version | `2022` | `2019` | `2017`
+--- | --- | --- | ---
+`ubuntu-22.04` | | |
+`ubuntu-20.04` | ✓ | default |
+`ubuntu-18.04` | | default | ✓
+`windows-2022` | ✓ | default |
+`windows-2019` | | default |
 
 Test against multiple versions
 
 ```yml
     strategy:
       matrix:
-        sqlserver-version: [2019, 2017]
+        sqlserver-version: [2022, 2019, 2017]
     steps:
       - uses: ankane/setup-sqlserver@v1
         with:

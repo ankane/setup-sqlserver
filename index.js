@@ -44,8 +44,8 @@ if (acceptEula !== 'true') {
   throw `The SQL Server End-User License Agreement (EULA) must be accepted before SQL Server can start`;
 }
 
-const sqlserverVersion = parseFloat(process.env['INPUT_SQLSERVER-VERSION'] || 2019);
-if (![2019, 2017].includes(sqlserverVersion)) {
+const sqlserverVersion = parseInt(process.env['INPUT_SQLSERVER-VERSION'] || 2019);
+if (![2022, 2019, 2017].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
 }
 
@@ -53,7 +53,9 @@ if (isMac()) {
   throw `Mac not supported`;
 } else if (isWindows()) {
   let url;
-  if (sqlserverVersion == 2019) {
+  if (sqlserverVersion == 2022) {
+    url = 'https://download.microsoft.com/download/c/c/9/cc9c6797-383c-4b24-8920-dc057c1de9d3/SQL2022-SSEI-Dev.exe';
+  } else if (sqlserverVersion == 2019) {
     // https://go.microsoft.com/fwlink/?linkid=866662
     url = 'https://download.microsoft.com/download/d/a/2/da259851-b941-459d-989c-54a18a5d44dd/SQL2019-SSEI-Dev.exe';
   } else {
