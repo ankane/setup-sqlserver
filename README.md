@@ -46,7 +46,7 @@ Test against multiple versions
 ```yml
     strategy:
       matrix:
-        sqlserver-version: [2022, 2019, 2017]
+        sqlserver-version: [2022, 2019]
     steps:
       - uses: ankane/setup-sqlserver@v1
         with:
