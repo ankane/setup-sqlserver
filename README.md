@@ -39,7 +39,7 @@ Version | `2022` | `2019` | `2017`
 `ubuntu-20.04` | default | ✓ |
 `ubuntu-18.04` | | default | ✓
 `windows-2022` | default | ✓ |
-`windows-2019` | | default |
+`windows-2019` | default | ✓ |
 
 Test against multiple versions
 

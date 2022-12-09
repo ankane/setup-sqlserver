@@ -45,7 +45,7 @@ if (acceptEula !== 'true') {
 }
 
 const image = process.env['ImageOS'];
-const defaultVersion = image == 'ubuntu20' || image == 'win22' ? '2022' : '2019';
+const defaultVersion = ['ubuntu20', 'win22', 'win19'].includes(image) ? '2022' : '2019';
 const sqlserverVersion = parseInt(process.env['INPUT_SQLSERVER-VERSION'] || defaultVersion);
 if (![2022, 2019, 2017].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
