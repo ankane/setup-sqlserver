@@ -5,5 +5,5 @@ inputs:
   accept-eula:
     description: Confirms acceptance of the End-User Licensing Agreement
 runs:
-  using: node16
+  using: node20
   main: index.js
