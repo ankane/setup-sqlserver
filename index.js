@@ -86,10 +86,6 @@ if (isMac()) {
 
   addToPath(`C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn`);
 } else {
-  if (image == 'ubuntu22') {
-    throw `Ubuntu 22.04 not supported`;
-  }
-
   // install
   run(`wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -`);
   run(`wget -qO- https://packages.microsoft.com/config/ubuntu/$(. /etc/os-release && echo $VERSION_ID)/mssql-server-${sqlserverVersion}.list | sudo tee /etc/apt/sources.list.d/mssql-server-${sqlserverVersion}.list`);
