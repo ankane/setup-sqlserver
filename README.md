@@ -6,7 +6,7 @@ The missing action for SQL Server :tada:
 - Works on Linux and Windows
 - Supports different versions
 
-[![Build Status](https://github.com/ankane/setup-sqlserver/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-sqlserver/actions)
+[![Build Status](https://github.com/ankane/setup-sqlserver/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/setup-sqlserver/actions)
 
 ## Getting Started
 
