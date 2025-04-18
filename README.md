@@ -37,6 +37,7 @@ Version | `2022` | `2019`
 --- | --- | ---
 `ubuntu-24.04` | |
 `ubuntu-22.04` | default |
+`windows-2025` | default | ✓
 `windows-2022` | default | ✓
 `windows-2019` | default | ✓
 
