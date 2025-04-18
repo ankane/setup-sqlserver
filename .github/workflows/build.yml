@@ -9,10 +9,6 @@ jobs:
         include:
           - os: ubuntu-22.04
             sqlserver-version: 2022
-          - os: ubuntu-20.04
-            sqlserver-version: 2022
-          - os: ubuntu-20.04
-            sqlserver-version: 2019
           - os: windows-2022
             sqlserver-version: 2022
           - os: windows-2022
