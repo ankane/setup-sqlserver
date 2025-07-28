@@ -17,10 +17,6 @@ jobs:
             sqlserver-version: 2022
           - os: windows-2022
             sqlserver-version: 2019
-          - os: windows-2019
-            sqlserver-version: 2022
-          - os: windows-2019
-            sqlserver-version: 2019
     steps:
       - uses: actions/checkout@v4
       - uses: ./.
