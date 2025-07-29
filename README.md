@@ -20,6 +20,13 @@ Add it as a step to your workflow
 
 `accept-eula` confirms your acceptance of the End-User Licensing Agreement
 
+The default credentials are:
+
+- user: `SA`
+- password: `YourStrong!Passw0rd`
+- host: `localhost`
+- port: `1433`
+
 ## Versions
 
 Specify a version
