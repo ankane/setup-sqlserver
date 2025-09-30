@@ -91,7 +91,10 @@ if (isMac()) {
   // need to update all due to dependencies
   // run(`sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/mssql-server-${sqlserverVersion}.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"`);
   run(`sudo apt-get update`);
+  // skip man-db triggers for performance
+  run(`sudo mv /var/lib/man-db/auto-update /var/lib/man-db/auto-update.bak`);
   run(`sudo apt-get install mssql-server mssql-tools`);
+  run(`sudo mv /var/lib/man-db/auto-update.bak /var/lib/man-db/auto-update`);
   run(`sudo MSSQL_SA_PASSWORD='YourStrong!Passw0rd' MSSQL_PID=developer /opt/mssql/bin/mssql-conf -n setup accept-eula`);
 
   waitForReady();
