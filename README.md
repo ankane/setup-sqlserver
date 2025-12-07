@@ -35,7 +35,7 @@ Specify a version
       - uses: ankane/setup-sqlserver@v1
         with:
           accept-eula: true
-          sqlserver-version: 2019
+          sqlserver-version: 2025
 ```
 
 Currently supports
@@ -52,7 +52,7 @@ Test against multiple versions
 ```yml
     strategy:
       matrix:
-        sqlserver-version: [2022, 2019]
+        sqlserver-version: [2025, 2022]
     steps:
       - uses: ankane/setup-sqlserver@v1
         with:
