@@ -44,7 +44,7 @@ if (acceptEula !== 'true') {
   throw `The SQL Server End-User License Agreement (EULA) must be accepted before SQL Server can start`;
 }
 
-const defaultVersion = '2022';
+const defaultVersion = '2025';
 const sqlserverVersion = parseInt(process.env['INPUT_SQLSERVER-VERSION'] || defaultVersion);
 if (![2025, 2022, 2019].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
