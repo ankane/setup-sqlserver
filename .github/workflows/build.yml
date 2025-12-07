@@ -8,11 +8,17 @@ jobs:
       matrix:
         include:
           - os: ubuntu-22.04
+            sqlserver-version: 2025
+          - os: ubuntu-22.04
             sqlserver-version: 2022
+          - os: windows-2025
+            sqlserver-version: 2025
           - os: windows-2025
             sqlserver-version: 2022
           - os: windows-2025
             sqlserver-version: 2019
+          - os: windows-2022
+            sqlserver-version: 2025
           - os: windows-2022
             sqlserver-version: 2022
           - os: windows-2022

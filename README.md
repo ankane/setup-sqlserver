@@ -40,12 +40,12 @@ Specify a version
 
 Currently supports
 
-Version | `2022` | `2019`
---- | --- | ---
-`ubuntu-24.04` | |
-`ubuntu-22.04` | default |
-`windows-2025` | default | ✓
-`windows-2022` | default | ✓
+Version | `2025` | `2022` | `2019`
+--- | --- | --- | ---
+`ubuntu-24.04` | | |
+`ubuntu-22.04` | ✓ | default |
+`windows-2025` | ✓ | default | ✓
+`windows-2022` | ✓ | default | ✓
 
 Test against multiple versions
 

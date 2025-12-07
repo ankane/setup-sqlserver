@@ -46,7 +46,7 @@ if (acceptEula !== 'true') {
 
 const defaultVersion = '2022';
 const sqlserverVersion = parseInt(process.env['INPUT_SQLSERVER-VERSION'] || defaultVersion);
-if (![2022, 2019].includes(sqlserverVersion)) {
+if (![2025, 2022, 2019].includes(sqlserverVersion)) {
   throw `SQL Server version not supported: ${sqlserverVersion}`;
 }
 
@@ -54,7 +54,9 @@ if (isMac()) {
   throw `Mac not supported`;
 } else if (isWindows()) {
   let url;
-  if (sqlserverVersion == 2022) {
+  if (sqlserverVersion == 2025) {
+    url = 'https://download.microsoft.com/download/77dc60d3-0139-4dad-83c8-bb52ab22db01/SQL2025-SSEI-StdDev.exe';
+  } else if (sqlserverVersion == 2022) {
     url = 'https://download.microsoft.com/download/c/c/9/cc9c6797-383c-4b24-8920-dc057c1de9d3/SQL2022-SSEI-Dev.exe';
   } else if (sqlserverVersion == 2019) {
     // https://go.microsoft.com/fwlink/?linkid=866662
@@ -67,7 +69,7 @@ if (isMac()) {
   const tmpDir = useTmpDir();
   run(`curl -Ls -o SQL${sqlserverVersion}-SSEI-Dev.exe ${url}`);
   run(`SQL${sqlserverVersion}-SSEI-Dev.exe /Action=Download /MediaPath="${tmpDir}" /MediaType=CAB /Quiet`);
-  run(`SQLServer${sqlserverVersion}-DEV-x64-ENU.exe /X:${tmpDir}\\Media /QS`);
+  run(`SQLServer${sqlserverVersion}-${sqlserverVersion == 2025 ? 'STD' : ''}DEV-x64-ENU.exe /X:${tmpDir}\\Media /QS`);
   const params = [
     `/IACCEPTSQLSERVERLICENSETERMS`,
     `/ACTION="install"`,
