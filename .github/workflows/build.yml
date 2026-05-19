@@ -7,6 +7,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - os: ubuntu-24.04
+            sqlserver-version: 2025
+
           - os: ubuntu-22.04
             sqlserver-version: 2025
           - os: ubuntu-22.04
@@ -32,5 +35,5 @@ jobs:
           sqlserver-version: ${{ matrix.sqlserver-version }}
           accept-eula: true
       - run: sqlcmd -?
-      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
-      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -C -Q 'CREATE DATABASE testdb'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -C -d testdb -Q 'SELECT @@VERSION'
