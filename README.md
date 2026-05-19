@@ -65,13 +65,13 @@ Test against multiple versions
 Create a database
 
 ```yml
-      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -Q 'CREATE DATABASE testdb'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -C -Q 'CREATE DATABASE testdb'
 ```
 
 Run queries
 
 ```yml
-      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -d testdb -Q 'SELECT @@VERSION'
+      - run: sqlcmd -U SA -P 'YourStrong!Passw0rd' -C -d testdb -Q 'SELECT @@VERSION'
 ```
 
 ## Related Actions
